@@ -1,11 +1,11 @@
 terraform {
   backend "remote" {
-    hostname = "app.terraform.io"
+    hostname     = "app.terraform.io"
     organization = "cloudcodecoffee"
 
-# TODO: look into using prefix instead
-     workspaces {
-        name = "ccc"
-     }
+    # TODO: look into using prefix instead
+    workspaces {
+      name = "ccc"
+    }
   }
 }

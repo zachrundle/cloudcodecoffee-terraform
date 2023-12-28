@@ -1,2 +1,2 @@
-name = "cloudcodecoffee2"
+name   = "ccc"
 region = "us-east-1"
