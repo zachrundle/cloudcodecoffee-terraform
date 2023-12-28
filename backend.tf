@@ -4,8 +4,6 @@ terraform {
     organization = "cloudcodecoffee"
 
     # TODO: look into using prefix instead
-    workspaces {
-      name = "ccc"
-    }
+    workspaces { name = "ccc" }
   }
 }
