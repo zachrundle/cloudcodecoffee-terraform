@@ -1,6 +1,5 @@
 locals {
   availability_zones = data.aws_availability_zones.available.names
-  az_count           = length(local.availability_zones)
 }
 
 resource "aws_vpc" "this" {
@@ -14,25 +13,25 @@ resource "aws_vpc" "this" {
 # The cidr block is dynamically built by passing in the prefix (VPC cidr), newbits, netnum
 # newbits will add 8 to the VPC cidr resulting in /24 subnets, the netnum will count the second octet by 1
 resource "aws_subnet" "public_subnet" {
-  count                   = local.az_count
+  for_each = {for idx, val in local.availability_zones: idx => val}
   vpc_id                  = aws_vpc.this.id
-  cidr_block              = cidrsubnet(var.vpc_cidr, 8, count.index)
-  availability_zone       = local.availability_zones[count.index]
+  cidr_block              = cidrsubnet(var.vpc_cidr, 8, each.key)
+  availability_zone       = element(local.availability_zones, each.key)
   map_public_ip_on_launch = true
   tags = {
-    Name = "${var.name} Public Subnet ${count.index + 1}"
+    Name = "${var.name} Public Subnet ${each.key + 1}"
   }
 }
 
 # netnum factors in that the first few subnets (based off AZ count for that region) are utilized for Public
 resource "aws_subnet" "private_subnet" {
-  count                   = local.az_count
+  for_each = {for idx, val in local.availability_zones: idx => val}
   vpc_id                  = aws_vpc.this.id
-  cidr_block              = cidrsubnet(var.vpc_cidr, 8, tonumber(local.az_count + count.index))
-  availability_zone       = local.availability_zones[count.index]
+  cidr_block              = cidrsubnet(var.vpc_cidr, 8, tonumber(length(local.availability_zones) + each.key))
+  availability_zone       = element(local.availability_zones, each.key)
   map_public_ip_on_launch = false
   tags = {
-    Name = "${var.name} Private Subnet ${count.index + 1}"
+    Name = "${var.name} Private Subnet ${each.key + 1}"
   }
 }
 
