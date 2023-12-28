@@ -7,16 +7,6 @@ terraform {
           version = "~> 5.0"
         }
     }
-
-    backend "remote" {
-        hostname = "app.terraform.io"
-        organization = "cloudcodecoffee"
-
-# TODO: look into using prefix instead
-        workspaces {
-            name = "ccc"
-        }
-    }
 }
 
 provider "aws" {
