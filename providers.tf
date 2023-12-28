@@ -21,7 +21,7 @@ provider "aws" {
   default_tags {
     tags = {
       ManagedBy = "terraform"
-      Workspace  = terraform.workspace
+      Workspace = terraform.workspace
     }
   }
 }
