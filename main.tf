@@ -5,8 +5,14 @@ module "network" {
   vpc_cidr   = "10.0.0.0/16"
 }
 
-module "iam" {
-  source = "./modules/iam"
-  user = ["zach", "mav"]
+module "iam_groups" {
+  source = "./modules/iam/groups"
+  iam_groups = {
+    "developers" = {
+      policies = ["arn:aws:iam::aws:policy/PowerUserAccess"]
+    },
+    "devops" = {
+      policies = ["arn:aws:iam::aws:policy/AdministratorAccess"]
+    },
+  }
 }
-

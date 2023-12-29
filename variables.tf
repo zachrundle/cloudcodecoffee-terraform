@@ -11,9 +11,3 @@ variable "region" {
 variable "aws_account" {
   description = "Account number to create AWS resources in. This variable should be defined in the Terraform Cloud workspace settings"
 }
-
-variable "user" {
-   description = "list of IAM users to create"
-   type = list(string)
-   default = [] 
-}
