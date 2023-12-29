@@ -4,3 +4,9 @@ module "network" {
   create_ngw = false
   vpc_cidr   = "10.0.0.0/16"
 }
+
+module "iam" {
+  source = "./modules/iam"
+  user = ["zach", "mav"]
+}
+
