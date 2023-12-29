@@ -14,6 +14,6 @@ resource "aws_iam_user_login_profile" "this" {
 
 resource "aws_iam_user_group_membership" "iam_user_group_memberships" {
   for_each = { for user in var.users_and_groups : user.is_service_account ? "svc-${user.iam_username}" : user.iam_username => user }
-  user     = aws_iam_user.iam_users[each.key].name
+  user     = aws_iam_user.this[each.key].name
   groups   = each.value.iam_groups
 }
