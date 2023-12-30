@@ -1,7 +1,7 @@
 resource "aws_iam_user" "this" {
   for_each = { for user in var.users_and_groups : user.iam_username => user }
 
-  name = can(each.value.is_service_account) ? "svc-${each.value.iam_username}" : each.value.iam_username
+  name = each.value.is_service_account == true ? "svc-${each.value.iam_username}" : each.value.iam_username
   path = var.users_path
 }
 

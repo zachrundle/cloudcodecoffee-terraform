@@ -12,12 +12,12 @@ module "iam_users" {
     {
       iam_username       = "zrundle"
       iam_groups         = ["devops"]
-      is_service_account = false
+
     },
     {
       iam_username       = "mav"
       iam_groups         = ["developers"]
-      is_service_account = false
+
     },
     {
       iam_username       = "argocd"

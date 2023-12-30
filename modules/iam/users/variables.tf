@@ -21,7 +21,7 @@ variable "users_and_groups" {
     {
       iam_username       = ""
       iam_groups         = []
-      is_service_account = null
+      is_service_account = false
     },
   ]
 }
