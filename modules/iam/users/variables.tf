@@ -12,16 +12,9 @@ variable "password_reset_required" {
 
 variable "users_and_groups" {
   description = "List of objects defining IAM users and their groups"
-  type = list(object({
+  type = map(object({
     iam_username       = string
-    iam_groups         = list(string)
-    is_service_account = bool
+    iam_groups         = set(string)
+    is_service_account = optional(bool,false)
   }))
-  default = [
-    {
-      iam_username       = ""
-      iam_groups         = []
-      is_service_account = false
-    },
-  ]
 }

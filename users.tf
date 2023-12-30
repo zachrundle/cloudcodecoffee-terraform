@@ -8,22 +8,22 @@ module "iam_users" {
   # The process of setting the initial user password will be done by the sysadmin
   # The process of generating API keys should be done by the user once default password has been changed
 
-  users_and_groups = [
-    {
+  users_and_groups = {
+    "Zach Rundle" = {
       iam_username       = "zrundle"
-      iam_groups         = ["devops"]
-      is_service_account = false
+      iam_groups         = ["devops", "developers"]
     },
-    {
+
+    "Maverick the Dog" = {
       iam_username       = "mav"
       iam_groups         = ["developers"]
-      is_service_account = false
     },
-    {
+    
+    "Argo CD" = {
       iam_username       = "argocd"
       iam_groups         = ["developers"]
       is_service_account = true
     },
-  ]
+  }
 }
 

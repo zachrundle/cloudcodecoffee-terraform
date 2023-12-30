@@ -1,3 +1,6 @@
+# FIX - only 1 IAM policy is being tied to a group (because of the [0] reference. I tried this with [*] and just
+# each.value.group but this did not work)
+
 resource "aws_iam_group" "this" {
   for_each = var.iam_groups
   name     = each.key
