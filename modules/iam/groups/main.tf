@@ -1,5 +1,16 @@
-# FIX - only 1 IAM policy is being tied to a group (because of the [0] reference. I tried this with [*] and just
-# each.value.group but this did not work)
+locals {
+    group_lists = flatten([
+        for group_key, details in var.iam_groups : [
+            for policy_key, policy_arn in details.policies : {
+                group_key = group_key
+                policy_key = policy_key
+                group = aws_iam_group.this[group_key].name
+                policy_arn = policy_arn
+
+            }
+        ]
+    ])
+}
 
 resource "aws_iam_group" "this" {
   for_each = var.iam_groups
@@ -7,8 +18,10 @@ resource "aws_iam_group" "this" {
 }
 
 resource "aws_iam_group_policy_attachment" "this" {
-  for_each = { for group, details in var.iam_groups : group => flatten([for policy in details.policies : { group = group, policy_arn = policy }]) }
+  for_each = {
+    for group in local.group_lists : "${group.group_key}" => group
+  }
 
-  group      = aws_iam_group.this[each.value[0].group].name
-  policy_arn = each.value[0].policy_arn
+  group = each.value.group
+  policy_arn = each.value.policy_arn
 }

@@ -9,10 +9,15 @@ module "iam_groups" {
   source = "./modules/iam/groups"
   iam_groups = {
     "developers" = {
-      policies = ["arn:aws:iam::aws:policy/ReadOnlyAccess"]
+      policies = [
+         "arn:aws:iam::aws:policy/ReadOnlyAccess",
+         "arn:aws:iam::aws:policy/AdministratorAccess",
+        ]
     },
     "devops" = {
-      policies = ["arn:aws:iam::aws:policy/AdministratorAccess"]
+      policies = [
+        "arn:aws:iam::aws:policy/AdministratorAccess",
+        ]
     },
   }
 }

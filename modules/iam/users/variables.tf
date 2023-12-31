@@ -11,7 +11,7 @@ variable "password_reset_required" {
 }
 
 variable "users_and_groups" {
-  description = "List of objects defining IAM users and their groups"
+  description = "Map of objects defining IAM users and their groups"
   type = map(object({
     iam_username       = string
     iam_groups         = set(string)

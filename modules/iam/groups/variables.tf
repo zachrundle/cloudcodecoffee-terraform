@@ -5,8 +5,6 @@ variable "iam_groups" {
   }))
 }
 
-
-
 variable "groups_path" {
   description = "Desired path for the IAM group"
   type        = string
