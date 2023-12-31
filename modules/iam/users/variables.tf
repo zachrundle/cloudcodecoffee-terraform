@@ -15,6 +15,6 @@ variable "users_and_groups" {
   type = map(object({
     iam_username       = string
     iam_groups         = set(string)
-    is_service_account = optional(bool,false)
+    is_service_account = optional(bool, false)
   }))
 }

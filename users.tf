@@ -10,15 +10,15 @@ module "iam_users" {
 
   users_and_groups = {
     "Zach Rundle" = {
-      iam_username       = "zrundle"
-      iam_groups         = ["devops", "developers"]
+      iam_username = "zrundle"
+      iam_groups   = ["devops", "developers"]
     },
 
     "Maverick the Dog" = {
-      iam_username       = "mav"
-      iam_groups         = ["developers"]
+      iam_username = "mav"
+      iam_groups   = ["developers"]
     },
-    
+
     "Argo CD" = {
       iam_username       = "argocd"
       iam_groups         = ["developers"]

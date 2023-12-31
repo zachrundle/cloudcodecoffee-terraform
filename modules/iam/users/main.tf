@@ -1,3 +1,7 @@
+# TODO: create a password in AWS Secrets Manager and reference using a data block for the default password
+# AWS console acts like a default password already exists (since accounts also have console access enabled)
+# because I don't have a default password, the password_reset_required doesn't work as intended
+
 resource "aws_iam_user" "this" {
   for_each = { for user in var.users_and_groups : user.iam_username => user }
 
