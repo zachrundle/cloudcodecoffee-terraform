@@ -19,7 +19,7 @@ resource "aws_iam_group" "this" {
 
 resource "aws_iam_group_policy_attachment" "this" {
   for_each = {
-    for group in local.group_lists : "${group.group_key}" => group
+    for group in local.group_lists : "${group.group_key}.${group.policy_key}" => group
   }
 
   group = each.value.group
