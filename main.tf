@@ -18,5 +18,10 @@ module "iam_groups" {
         "arn:aws:iam::aws:policy/AdministratorAccess",
       ]
     },
+    "serviceaccounts" = {
+      policies = [
+        "arn:aws:iam::aws:policy/ReadOnlyAccess",
+      ]
+    },
   }
 }

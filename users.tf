@@ -21,7 +21,7 @@ module "iam_users" {
 
     "Argo CD" = {
       iam_username       = "argocd"
-      iam_groups         = ["developers"]
+      iam_groups         = ["serviceaccounts"]
       is_service_account = true
     },
   }
