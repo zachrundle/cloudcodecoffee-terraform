@@ -1,3 +1,5 @@
+# TODO: look into using if statements for DRY code for public/private subnets
+
 locals {
   availability_zones = data.aws_availability_zones.available.names
 }
