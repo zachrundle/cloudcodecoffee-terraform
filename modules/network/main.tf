@@ -18,7 +18,7 @@ resource "aws_subnet" "public_subnet" {
   for_each                = { for i, v in local.availability_zones : i => v }
   vpc_id                  = aws_vpc.this.id
   cidr_block              = cidrsubnet(var.vpc_cidr, 8, each.key)
-  availability_zone       = element(local.availability_zones, each.key)
+  availability_zone       = each.value
   map_public_ip_on_launch = true
   tags = {
     Name = "${var.name} Public Subnet ${each.key + 1}"
@@ -30,7 +30,7 @@ resource "aws_subnet" "private_subnet" {
   for_each                = { for i, v in local.availability_zones : i => v }
   vpc_id                  = aws_vpc.this.id
   cidr_block              = cidrsubnet(var.vpc_cidr, 8, length(local.availability_zones) + each.key)
-  availability_zone       = element(local.availability_zones, each.key)
+  availability_zone       = each.value
   map_public_ip_on_launch = false
   tags = {
     Name = "${var.name} Private Subnet ${each.key + 1}"
