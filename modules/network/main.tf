@@ -1,7 +1,9 @@
 # TODO: look into using if statements for DRY code for public/private subnets
+# TODO: look into if using a set is better than using a map for subnets
 
 locals {
   availability_zones = data.aws_availability_zones.available.names
+  #availability_zones = toset([data.aws_availability_zones.available.names])
 }
 
 resource "aws_vpc" "this" {
