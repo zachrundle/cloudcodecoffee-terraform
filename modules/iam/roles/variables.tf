@@ -3,3 +3,8 @@ variable "role_path" {
   type        = string
   default     = "/system/"
 }
+
+variable "eks_role_name" {
+  description = "TODO"
+  type = string
+}
