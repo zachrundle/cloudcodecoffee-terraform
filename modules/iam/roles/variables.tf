@@ -6,5 +6,5 @@ variable "role_path" {
 
 variable "eks_role_name" {
   description = "TODO"
-  type = string
+  type        = string
 }

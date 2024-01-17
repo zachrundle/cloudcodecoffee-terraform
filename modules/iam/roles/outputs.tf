@@ -1,9 +1,9 @@
-output "iam_role_arn" {
+output "cluster_iam_role_arn" {
   description = "ARN of IAM role"
-  value       = aws_iam_role.this[0].arn
+  value       = aws_iam_role.eks_cluster_role.arn
 }
 
-output "iam_role_name" {
+output "cluster_iam_role_name" {
   description = "Name of IAM role"
-  value       = aws_iam_role.this[0].name
+  value       = aws_iam_role.eks_cluster_role.name
 }
