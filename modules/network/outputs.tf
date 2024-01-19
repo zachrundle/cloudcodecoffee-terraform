@@ -2,10 +2,10 @@ output "vpc" {
   value = aws_vpc.this
 }
 
-output "public_subnets" {
-  value = aws_subnet.public_subnet
+output "private_subnet_ids" {
+  value = values(aws_subnet.private_subnet)[*].id
 }
 
-output "private_subnets" {
-  value = aws_subnet.private_subnet
+output "public_subnet_ids" {
+  value = values(aws_subnet.public_subnet)[*].id
 }

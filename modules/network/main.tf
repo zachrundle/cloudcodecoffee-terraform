@@ -1,5 +1,12 @@
 # TODO: look into using if statements for DRY code for public/private subnets
 
+data "aws_region" "current" {
+}
+
+data "aws_availability_zones" "available" {
+  state = "available"
+}
+
 locals {
   availability_zones = data.aws_availability_zones.available.names
 }
