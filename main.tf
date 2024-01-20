@@ -33,6 +33,7 @@ module "iam_groups" {
 
 module "eks" {
   source = "./modules/eks"
+  create_eks_cluster = false
   name = var.name
   role_arn = module.iam_roles.cluster_iam_role_arn
   cluster_version = 1.27

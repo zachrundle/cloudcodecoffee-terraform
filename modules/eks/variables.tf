@@ -18,3 +18,8 @@ variable "subnet_ids" {
     type = list(string)
 }
 
+variable "create_eks_cluster" {
+    description = "Choose if you want to create an EKS cluster"
+    type = bool
+}
+
