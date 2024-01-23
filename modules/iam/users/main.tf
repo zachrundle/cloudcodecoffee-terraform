@@ -1,3 +1,5 @@
+# TODO: find a better way for password management, as this is not a realistic solution
+
 resource "aws_iam_user" "this" {
   for_each = { for user in var.users_and_groups : user.iam_username => user }
 
@@ -18,9 +20,5 @@ resource "aws_iam_user_group_membership" "iam_user_group_memberships" {
 
   user   = aws_iam_user.this[each.key].name
   groups = each.value.iam_groups
-}
-
-output "password" {
-  value = [for user in values(aws_iam_user_login_profile.this) : user.password]
 }
 
