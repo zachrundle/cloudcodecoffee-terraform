@@ -1,7 +1,3 @@
-# TODO: create a password in AWS Secrets Manager and reference using a data block for the default password
-# AWS console acts like a default password already exists (since accounts also have console access enabled)
-# because I don't have a default password, the password_reset_required doesn't work as intended
-
 resource "aws_iam_user" "this" {
   for_each = { for user in var.users_and_groups : user.iam_username => user }
 
@@ -14,6 +10,7 @@ resource "aws_iam_user_login_profile" "this" {
 
   user                    = aws_iam_user.this[each.key].name
   password_reset_required = var.password_reset_required
+   pgp_key = "keybase:${each.key}"
 }
 
 resource "aws_iam_user_group_membership" "iam_user_group_memberships" {
@@ -22,3 +19,8 @@ resource "aws_iam_user_group_membership" "iam_user_group_memberships" {
   user   = aws_iam_user.this[each.key].name
   groups = each.value.iam_groups
 }
+
+output "password" {
+  value = [for user in values(aws_iam_user_login_profile.this) : user.encrypted_password]
+}
+

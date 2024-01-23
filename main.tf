@@ -7,7 +7,7 @@ module "network" {
 
 module "iam_roles" {
   source        = "./modules/iam/roles"
-  eks_role_name = "test-role"
+  eks_role_name = "${var.name}_eks_cluster_role"
 }
 
 module "iam_groups" {

@@ -5,6 +5,6 @@ variable "role_path" {
 }
 
 variable "eks_role_name" {
-  description = "TODO"
+  description = "Name of the role that EKS will use to manage resources"
   type        = string
 }
