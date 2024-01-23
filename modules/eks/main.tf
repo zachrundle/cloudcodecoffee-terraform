@@ -1,4 +1,4 @@
-resource "aws_eks_cluster" "example" {
+resource "aws_eks_cluster" "this" {
   count = var.create_eks_cluster ? 1 : 0
   name     = var.name
   role_arn = var.role_arn
