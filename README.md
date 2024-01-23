@@ -14,11 +14,11 @@ Terraform code for CloudCodeCoffee YT channel. I will work on various projects f
 
 
 TODO
-[ ] create IAM roles to tie in with EKS clusterroles (read only, admin)
-[ ] create EKS managed node group
-[ ] create ASG
-[ ] create spot instance fleet
-[ ] ...
+- [ ] create IAM roles to tie in with EKS clusterroles (read only, admin)
+- [ ] create EKS managed node group
+- [ ] create ASG
+- [ ] create spot instance fleet
+- [ ] ...
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
