@@ -10,7 +10,7 @@ resource "aws_iam_user_login_profile" "this" {
 
   user                    = aws_iam_user.this[each.key].name
   password_reset_required = var.password_reset_required
-   pgp_key = "keybase:${each.key}"
+  password_length = 20 
 }
 
 resource "aws_iam_user_group_membership" "iam_user_group_memberships" {
@@ -21,6 +21,6 @@ resource "aws_iam_user_group_membership" "iam_user_group_memberships" {
 }
 
 output "password" {
-  value = [for user in values(aws_iam_user_login_profile.this) : user.encrypted_password]
+  value = [for user in values(aws_iam_user_login_profile.this) : user.password]
 }
 
