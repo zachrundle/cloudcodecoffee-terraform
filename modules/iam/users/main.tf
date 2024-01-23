@@ -12,7 +12,7 @@ resource "aws_iam_user_login_profile" "this" {
 
   user                    = aws_iam_user.this[each.key].name
   password_reset_required = var.password_reset_required
-  password_length = 20 
+  password_length         = 20
 }
 
 resource "aws_iam_user_group_membership" "iam_user_group_memberships" {

@@ -1,25 +1,25 @@
 variable "role_arn" {
-    description = "ARN of the IAM role that EKS cluster will use"
-    type = string
+  description = "ARN of the IAM role that EKS cluster will use"
+  type        = string
 }
 
 variable "name" {
-    description = "Name of the EKS cluster"
-    type = string
+  description = "Name of the EKS cluster"
+  type        = string
 }
 
 variable "cluster_version" {
-    description = "Kubernetes cluster version in the format of <major>.<minor>"
-    type = number
+  description = "Kubernetes cluster version in the format of <major>.<minor>"
+  type        = number
 }
 
 variable "subnet_ids" {
-    description = "Subnets where EKS cluster will be provisioned"
-    type = list(string)
+  description = "Subnets where EKS cluster will be provisioned"
+  type        = list(string)
 }
 
 variable "create_eks_cluster" {
-    description = "Choose if you want to create an EKS cluster"
-    type = bool
+  description = "Choose if you want to create an EKS cluster"
+  type        = bool
 }
 
