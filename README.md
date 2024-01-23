@@ -13,6 +13,14 @@
 Terraform code for CloudCodeCoffee YT channel. I will work on various projects focused around AWS, Kubernetes, Terraform, and other DevOps tools.
 
 
+TODO
+[ ] create IAM roles to tie in with EKS clusterroles (read only, admin)
+[ ] create EKS managed node group
+[ ] create ASG
+[ ] create spot instance fleet
+[ ] ...
+
+
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 [contributors-shield]: https://img.shields.io/github/contributors/zachrundle/cloudcodecoffee-terraform.svg?style=for-the-badge
