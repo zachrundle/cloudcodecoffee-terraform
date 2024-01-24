@@ -1,4 +1,7 @@
 # TODO: find a better way for password management, as this is not a realistic solution
+# After some thought, creating manual IAM user accounts is not a good solution, instead will look at exploring this
+# https://docs.aws.amazon.com/IAM/latest/UserGuide/id_roles_providers.html
+
 resource "aws_iam_account_password_policy" "this" {
   minimum_password_length = 12
   require_lowercase_characters = true
