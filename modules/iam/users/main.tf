@@ -25,7 +25,7 @@ resource "aws_iam_user_login_profile" "this" {
 
 resource "aws_iam_access_key" "this" {
   for_each = { for user in var.users_and_groups : user.iam_username => user }
-  user       = each.key
+  user       = each.value.is_service_account == true ? "svc_${each.key}" : each.key
   depends_on = [aws_iam_user.this]
 }
 
