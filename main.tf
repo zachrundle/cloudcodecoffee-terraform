@@ -39,4 +39,3 @@ module "eks" {
   cluster_version    = 1.27
   subnet_ids         = module.network.private_subnet_ids
 }
-
